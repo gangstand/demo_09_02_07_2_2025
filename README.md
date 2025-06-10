@@ -68,6 +68,7 @@ python .\main.py
 * `app/infrastructure/database` — SQLAlchemy модели, сессии, миграции
 * `app/application/service` — бизнес-логика
 * `app/presentation/ui` — основное GUI
+* `app/resources` - Файлы и скрипты базы данных, прочие графические файлы (ERD)
 * `main.py` — точка входа
 
 ---
