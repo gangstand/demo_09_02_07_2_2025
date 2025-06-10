@@ -5,9 +5,10 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtGui import QIcon, QFont
 
 from app.application.service import MaterialService
-# from app.presentation.ui.calculation import CalculationWindow
+from app.presentation.ui.calculation import CalculationWindow
 from app.presentation.ui.edit_material import EditMaterialDialog
 from app.presentation.ui.suppliers import SuppliersWindow
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -34,7 +35,8 @@ class MainWindow(QMainWindow):
         self.table.setSelectionMode(QAbstractItemView.SingleSelection)
         self.table.setHorizontalHeaderLabels([
             "Наименование материала", "Тип материала", "Единица измерения", "Количество в упаковке",
-            "Количество на складе", "Минимальное количество", "Цена единицы материала", "Минимальная партия, руб.", "Поставщики"
+            "Количество на складе", "Минимальное количество", "Цена единицы материала", "Минимальная партия, руб.",
+            "Поставщики"
         ])
         self.table.horizontalHeader().setStretchLastSection(True)
         vbox.addWidget(self.table)
@@ -47,7 +49,7 @@ class MainWindow(QMainWindow):
             ("Добавить", self.on_add),
             ("Редактировать", self.on_edit),
             ("Поставщики", self.on_suppliers),
-            ("Расчет продукции", lambda : True)
+            ("Расчет продукции", self.on_calculation)
         ]
         for text, handler in buttons:
             btn = QPushButton(text)
@@ -105,8 +107,7 @@ class MainWindow(QMainWindow):
             dlg = SuppliersWindow(material_id=material.id, parent=self)
             dlg.exec_()
             self._load_data()
-    #
-    # def on_calculation(self):
-    #     dlg = CalculationWindow(parent=self)
-    #     dlg.exec_()
 
+    def on_calculation(self):
+        dlg = CalculationWindow(parent=self)
+        dlg.exec_()
