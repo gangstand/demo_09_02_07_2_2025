@@ -1,6 +1,6 @@
 from sqlalchemy import select
 from app.infrastructure.database.postgresql.session import SessionLocal
-from app.infrastructure.database.postgresql.models import Material, MaterialQuantityHistory
+from app.infrastructure.database.postgresql.models import Material
 
 class MaterialRepository:
     @staticmethod
@@ -18,16 +18,6 @@ class MaterialRepository:
         with SessionLocal() as session:
             session.add(material)
             session.commit()
-            session.refresh(material)
-            if material.quantity:
-                session.add(
-                    MaterialQuantityHistory(
-                        material_id=material.id,
-                        change_amount=material.quantity,
-                        reason="initial"
-                    )
-                )
-                session.commit()
             return material
 
     @staticmethod
@@ -37,21 +27,10 @@ class MaterialRepository:
             if not m:
                 raise ValueError(f"Материал {material_id} не найден")
 
-            old_qty = m.quantity
             for key, value in data.items():
                 setattr(m, key, value)
+
             session.add(m)
-
-            delta = m.quantity - old_qty
-            if delta != 0:
-                session.add(
-                    MaterialQuantityHistory(
-                        material_id=material_id,
-                        change_amount=delta,
-                        reason="update"
-                    )
-                )
-
             session.commit()
             session.refresh(m)
             return m
