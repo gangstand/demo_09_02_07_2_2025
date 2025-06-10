@@ -7,7 +7,7 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QDate
 
 from app.application.service import SupplierService, MaterialSupplierService
-from app.presentation.ui.add_supplier import AddSupplierDialog
+from app.presentation.ui.supplier import AddSupplierDialog
 
 
 class SuppliersWindow(QDialog):

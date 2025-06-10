@@ -9,8 +9,8 @@ from app.application.service import (
     MaterialTypeService,
     UnitService,
 )
-from app.presentation.ui.add_material_type import AddMaterialTypeDialog
-from app.presentation.ui.add_unit import AddUnitDialog
+from app.presentation.ui.material_type import AddMaterialTypeDialog
+from app.presentation.ui.unit import AddUnitDialog
 
 
 class EditMaterialDialog(QDialog):

@@ -6,7 +6,7 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtCore import Qt
 
 from app.application.service import ProductionService, ProductTypeService, MaterialTypeService
-from app.presentation.ui.add_product_type import AddProductTypeDialog
+from app.presentation.ui.product_type import AddProductTypeDialog
 
 
 class CalculationWindow(QDialog):

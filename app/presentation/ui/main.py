@@ -6,14 +6,14 @@ from PyQt5.QtGui import QIcon, QFont
 
 from app.application.service import MaterialService
 from app.presentation.ui.calculation import CalculationWindow
-from app.presentation.ui.edit_material import EditMaterialDialog
+from app.presentation.ui.material import EditMaterialDialog
 from app.presentation.ui.suppliers import SuppliersWindow
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Склад материалов — Мозаика")
+        self.setWindowTitle("Мозаика")
         self.setWindowIcon(QIcon("./app/resources/icon.png"))
         self.resize(1440, 1000)
         self.setMinimumSize(1000, 800)
